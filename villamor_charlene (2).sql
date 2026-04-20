@@ -87,6 +87,33 @@ ALTER TABLE `Patients`
   ADD PRIMARY KEY (`patient_id`);
 COMMIT;
 
+select P.patient_name, A.doctor_name
+from Patients P
+inner join Appointments A
+on P.patient_id = A.patient_id;
+
+select P.patient_name, P.city, A.doctor_name, A.appointment_date
+from Patients P
+inner join Appointments A
+on P.patient_id = A.patient_id
+where P.city = 'Cebu'
+
+select P.patient_name, A.doctor_name, A.appointment_date
+from Patients P
+inner join Appointments A
+on P.patient_id = A.patient_id
+where A.doctor_name = 'Dr. Garcia';
+
+select P.patient_name, A.appointment_date
+from Patients P
+left join Appointments A
+on P.patient_id = A.patient_id;
+
+select P.patient_name, A.doctor_name, A.appointment_date
+from Patients P
+right join Appointments A
+on P.patient_id = A.patient_id;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
